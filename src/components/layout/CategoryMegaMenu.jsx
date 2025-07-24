@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Dữ liệu xe (giữ nguyên)
 const carData = {
@@ -90,16 +91,21 @@ function CategoryMegaMenu({ visible, onClose }) {
                 {/* Hàng Sản phẩm (cuộn ngang) */}
                 <div className="flex items-start space-x-8 px-4 pb-4 overflow-x-auto whitespace-nowrap">
                   {carData[activeCategory]?.map((car) => (
-                    <div key={car.name} className="flex-shrink-0 w-48 text-center group cursor-pointer">
-                       <div className="bg-gray-100 rounded-lg overflow-hidden h-32 flex items-center justify-center">
-                        <img
+                    <Link 
+                      to={`/vehicles/${car.id}`} 
+                      key={car.id} 
+                      onClick={onClose} // Đóng menu khi click
+                      className="flex-shrink-0 w-48 text-center group cursor-pointer"
+                    >
+                      <div className="bg-gray-100 rounded-lg overflow-hidden h-32 flex items-center justify-center">
+                          <img
                           src={car.image}
                           alt={car.name}
                           className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                       <p className="mt-2 text-sm font-semibold text-gray-800">{car.name}</p>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

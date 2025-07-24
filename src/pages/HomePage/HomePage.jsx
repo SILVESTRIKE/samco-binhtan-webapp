@@ -1,233 +1,252 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Battery, Zap, Users } from 'lucide-react';
-
-function HomePage({ language }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
+import React from 'react';
+import { Shield, Battery, Zap, Users, Wrench, Car } from 'lucide-react';
+import HeroBanner from './HeroBanner';
+import HeroContent from './HeroContent'; 
+import FamilySection from './FamilySection';
+import NewsArticles from './NewsArticles';
+import Newsletter from './Newsletter';
+function HomePage({ language = 'vi' }) {
+  
   const content = {
     en: {
       hero: {
-        title: "VF 8 Plus",
-        subtitle: "Premium Electric Performance",
-        description: "Experience the future of electric mobility with cutting-edge technology",
         explore: "Explore Vehicle",
         testDrive: "Book Test Drive"
       },
-      family: {
-        title: "Explore the VinFast Family",
-        subtitle: "VinFast's design language blends sporty curves, luxurious strokes, and formidable presence.",
+      family1: {
+        title: "Explore the Samco Family",
+        subtitle: "Samco's design language blends powerful lines, luxurious strokes, and a formidable presence.",
         quality: "The perfect blend of premium quality & comfort",
-        description: "VinFast's EVs are equipped with human-centered tech that seamlessly improves the driving experience by focusing on you."
+        description: "Samco vehicles are equipped with human-centered technology that seamlessly improves the experience by focusing on you.",
+        features: [
+          { text: 'Advanced Safety Features', icon: Shield },
+          { text: 'Superior Durability', icon: Battery },
+          { text: 'Powerful Performance', icon: Zap }
+        ]
       },
-      experience: {
-        title: "VinFast's Experience",
-        description: "VinFast, the innovative new electric car company, prioritizes premium craftsmanship and high-quality parts in crafting its EVs.",
-        warranty: "10 Year / 125,000 mile warranty",
-        charging: "95% EV Charging Station Coverage",
-        service: "Outstanding Service"
+      family2: {
+        title: "Uncompromising Service",
+        subtitle: "Dedicated to providing the best ownership experience.",
+        quality: "Professional, Fast, and Reliable",
+        description: "Our service centers are equipped with modern technology and staffed by certified technicians to keep your vehicle in top condition.",
+        features: [
+          { text: 'Genuine Parts', icon: Wrench },
+          { text: 'Expert Technicians', icon: Users },
+          { text: 'Nationwide Network', icon: Car }
+        ]
       },
-      newsletter: {
-        title: "Join the Charge",
-        description: "Sign up here to find out more about the exceptional features crafted into every VinFast and our mission to drive the world to switch to electric vehicles."
+      news: {
+        title: "Latest Samco News",
+        subtitle: "Stay updated with the latest developments and innovations from Samco"
+      },
+       newsletter: {
+        title: "Join Our Community",
+        description: "Sign up here to find out more about the exceptional features crafted into every Samco and our mission for a better future.",
+        placeholder: "Enter your email",
+        button: "Subscribe"
       }
     },
     vi: {
       hero: {
-        title: "VF 8 Plus",
-        subtitle: "Hiệu suất điện cao cấp",
-        description: "Trải nghiệm tương lai của xe điện với công nghệ tiên tiến",
         explore: "Khám phá xe",
         testDrive: "Đăng ký lái thử"
       },
-      family: {
-        title: "Khám phá gia đình VinFast",
-        subtitle: "Ngôn ngữ thiết kế của VinFast pha trộn đường cong thể thao, nét sang trọng và sự hiện diện uy lực.",
+      family1: {
+        title: "Khám phá gia đình Samco",
+        subtitle: "Ngôn ngữ thiết kế của Samco pha trộn đường nét mạnh mẽ, nét sang trọng và sự hiện diện uy lực.",
         quality: "Sự pha trộn hoàn hảo giữa chất lượng cao cấp và sự thoải mái",
-        description: "Xe điện VinFast được trang bị công nghệ lấy con người làm trung tâm, cải thiện liền mạch trải nghiệm lái xe."
+        description: "Xe Samco được trang bị công nghệ lấy con người làm trung tâm, cải thiện liền mạch trải nghiệm bằng cách tập trung vào bạn.",
+        features: [
+          { text: 'Tính năng an toàn tiên tiến', icon: Shield },
+          { text: 'Độ bền vượt trội', icon: Battery },
+          { text: 'Hiệu suất mạnh mẽ', icon: Zap }
+        ]
       },
-      experience: {
-        title: "Trải nghiệm VinFast",
-        description: "VinFast, công ty xe điện tiên phong, ưu tiên tay nghề cao cấp và linh kiện chất lượng cao trong việc chế tạo xe điện.",
-        warranty: "Bảo hành 10 năm / 200.000 km",
-        charging: "Bao phủ 95% trạm sạc xe điện",
-        service: "Dịch vụ xuất sắc"
+      family2: {
+        title: "Dịch vụ không giới hạn",
+        subtitle: "Tận tâm mang lại trải nghiệm sở hữu tốt nhất.",
+        quality: "Chuyên nghiệp, Nhanh chóng và Tin cậy",
+        description: "Trung tâm dịch vụ của chúng tôi được trang bị công nghệ hiện đại và đội ngũ kỹ thuật viên được chứng nhận để giữ cho chiếc xe của bạn luôn ở trạng thái tốt nhất.",
+        features: [
+          { text: 'Phụ tùng chính hãng', icon: Wrench },
+          { text: 'Kỹ thuật viên chuyên nghiệp', icon: Users },
+          { text: 'Mạng lưới toàn quốc', icon: Car }
+        ]
+      },
+      news: {
+        title: "Tin tức Samco mới nhất",
+        subtitle: "Cập nhật những phát triển và đổi mới mới nhất từ Samco"
       },
       newsletter: {
         title: "Tham gia cuộc cách mạng",
-        description: "Đăng ký tại đây để tìm hiểu thêm về các tính năng đặc biệt được tích hợp vào mỗi chiếc VinFast và sứ mệnh thúc đẩy thế giới chuyển sang xe điện."
+        description: "Đăng ký tại đây để tìm hiểu thêm về các tính năng đặc biệt được tích hợp vào mỗi chiếc VinFast và sứ mệnh thúc đẩy thế giới chuyển sang xe điện.",
+        placeholder: "Nhập email của bạn",
+        button: "Đăng ký"
       }
     }
-  }
+  };
+  const slider1_Data = [
+    { title: "SAMCO GROWIN 2024", subtitle: "Sang trọng trên mọi hành trình", image: "https://samco.com.vn/vnt_upload/weblink/Banner_Trang_chu/5_xe_SAMCO-01.png", exploreText: "Chi tiết", testDriveText: "Lái thử" },
+    { title: "SAMCO ALLERGO MỚI", subtitle: "Mạnh mẽ, bền bỉ và hiệu quả", image: "https://samco.com.vn/vnt_upload/news/2025/DaihoiDang20252030/thumbs/770_crop__10.jpg", exploreText: "Chi tiết", testDriveText: "Lái thử" }
+  ];
 
-  const heroSlides = [
+  // DỮ LIỆU CHO SLIDER 2
+  const slider2_Data = [
+    { title: "Ưu đãi dịch vụ Hè 2025", subtitle: "Bảo dưỡng toàn diện, sẵn sàng cho mọi chuyến đi.", image: "https://xekhach-bacviet.vn/wp-content/uploads/2024/11/hyundai-solti-dl-e5-mau-den-6.jpg", exploreText: "Xem chi tiết", testDriveText: "Đặt lịch" },
+    { title: "Phụ tùng chính hãng", subtitle: "Đảm bảo hiệu suất và an toàn tối đa.", image: "https://samco.com.vn/vnt_upload/product/03_2017/thumbs/(600x400)_crop_prod6.jpg", exploreText: "Tìm hiểu", testDriveText: "Tư vấn" },
+  ];
+  
+  // DỮ LIỆU CHO SLIDER 3
+  const slider3_Data = [
+    { image: "https://xekhach-bacviet.vn/wp-content/uploads/2024/09/3-1.jpg", exploreText: "Các dòng xe tải", testDriveText: "Báo giá" },
+    { image: "https://samco.com.vn/vnt_upload/product/Quan_Ly_danh_muc/xe_chuyen_dung/thumbs/(570x380)_crop_xe_san_khau_1.jpg", exploreText: "Xe chuyên dụng", testDriveText: "Tìm đại lý" }
+  ];
+  // Sample news articles
+  const newsArticles = [
     {
-      title: content[language].hero.title,
-      subtitle: content[language].hero.subtitle,
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1200&h=800&fit=crop",
-      description: content[language].hero.description
+      title: "VinFast mở rộng mạng lưới showroom toàn quốc",
+      summary: "Công ty tiếp tục đầu tư mở rộng hệ thống showroom và trung tâm dịch vụ để phục vụ khách hàng tốt hơn.",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
+      category: "Kinh doanh",
+      date: "24/07/2025",
+      author: "VinFast News",
+      readTime: "3 phút đọc",
+      link: "#"
+    },
+    {
+      title: "Công nghệ pin mới cho phạm vi hoạt động lớn hơn",
+      summary: "VinFast công bố công nghệ pin thế hệ mới với khả năng tăng phạm vi hoạt động lên đến 500km.",
+      image: "https://static.automotor.vn/w640/images/upload/2024/11/05/pin-the-ran-xe-dien-vneconomyautomotive.jpeg",
+      category: "Công nghệ",
+      date: "23/07/2025",
+      author: "Tech Team",
+      readTime: "5 phút đọc",
+      link: "#"
+    },
+    {
+      title: "VinFast hợp tác với các đối tác quốc tế",
+      summary: "Những thỏa thuận hợp tác mới giúp VinFast mở rộng ra thị trường châu Âu và Bắc Mỹ.",
+      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop",
+      category: "Đối tác",
+      date: "22/07/2025",
+      author: "Business Team",
+      readTime: "4 phút đọc",
+      link: "#"
+    },
+    {
+      title: "Trạm sạc siêu nhanh mới tại các thành phố lớn",
+      summary: "Hệ thống trạm sạc siêu nhanh 350kW được lắp đặt tại Hà Nội, TP.HCM và Đà Nẵng.",
+      image: "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=600&h=400&fit=crop",
+      category: "Hạ tầng",
+      date: "21/07/2025",
+      author: "Infrastructure Team",
+      readTime: "3 phút đọc",
+      link: "#"
     }
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroSlides.length]);
-
+  // Handle newsletter submission
+  const handleNewsletterSubmit = async (email) => {
+    // Simulate API call
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (email.includes('test@')) {
+          reject(new Error('Test email rejected'));
+        } else {
+          resolve({ success: true });
+        }
+      }, 1000);
+    });
+  };
+  const handleExploreClick = () => console.log("Explore button clicked!");
+  const handleTestDriveClick = () => console.log("Test Drive button clicked!");
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-screen overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroSlides[currentSlide].image}
-            alt={heroSlides[currentSlide].title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 hero-overlay"></div>
-        </div>
-
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <h1 className="text-responsive-xl font-bold text-white mb-6 animate-fade-in-up">
-                {heroSlides[currentSlide].title}
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-4 animate-fade-in-up animate-delay-200">
-                {heroSlides[currentSlide].subtitle}
-              </p>
-              <p className="text-lg text-gray-300 mb-8 animate-fade-in-up animate-delay-300">
-                {heroSlides[currentSlide].description}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="btn-primary">
-                  {content[language].hero.explore}
-                </button>
-                <button className="btn-outline">
-                  {content[language].hero.testDrive}
-                </button>
-              </div>
-            </div>
+      {/* SLIDER 1: Nội dung căn trái, đẩy xuống dưới */}
+      <HeroBanner slides={slider1_Data} minHeight="100vh">
+        {/* {(activeSlide) => (
+          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24">
+            <HeroContent slide={activeSlide} textAlignment="left" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
           </div>
-        </div>
-      </section>
+        )} */}
+      </HeroBanner>
 
-      {/* Brand Promise Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              {content[language].family.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              {content[language].family.subtitle}
-            </p>
+      {/* SLIDER 2: Nội dung căn giữa, đẩy xuống dưới */}
+      <HeroBanner slides={slider2_Data} imageOverlay={true} minHeight="80vh">
+        {(activeSlide) => (
+          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+          <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-auto pb-24 text-center">
+            <HeroContent slide={activeSlide} textAlignment="center" onExplore={handleExploreClick} onTestDrive={handleTestDriveClick} />
           </div>
+        )}
+      </HeroBanner>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=400&fit=crop"
-                alt="VinFast Interior"
-                className="rounded-2xl shadow-2xl"
-              />
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                {content[language].family.quality}
-              </h3>
-              <p className="text-lg text-gray-600 mb-8">
-                {content[language].family.description}
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Shield className="h-6 w-6 text-blue-600 mr-3" />
-                  <span className="text-lg font-semibold">{language === 'en' ? 'Advanced Safety Features' : 'Tính năng an toàn tiên tiến'}</span>
-                </div>
-                <div className="flex items-center">
-                  <Battery className="h-6 w-6 text-blue-600 mr-3" />
-                  <span className="text-lg font-semibold">{language === 'en' ? 'Long-Range Battery Technology' : 'Công nghệ pin tầm xa'}</span>
-                </div>
-                <div className="flex items-center">
-                  <Zap className="h-6 w-6 text-blue-600 mr-3" />
-                  <span className="text-lg font-semibold">{language === 'en' ? 'Fast Charging Capability' : 'Khả năng sạc nhanh'}</span>
-                </div>
-              </div>
-            </div>
+      {/* SLIDER 3: Chỉ có nút, căn giữa, đẩy xuống dưới */}
+      <HeroBanner slides={slider3_Data} imageOverlay={true} minHeight="75vh">
+        {(activeSlide) => (
+          // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
+          <div className="w-full mt-auto pb-24 flex justify-center px-4">
+            <HeroContent 
+              slide={{ exploreText: activeSlide.exploreText, testDriveText: activeSlide.testDriveText }}
+              onExplore={handleExploreClick} 
+              onTestDrive={handleTestDriveClick}
+            />
           </div>
-        </div>
-      </section>
+        )}
+      </HeroBanner>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {content[language].experience.title}
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              {content[language].experience.description}
-            </p>
-          </div>
+      {/* Family/Brand Promise Section */}
+      <FamilySection
+        title={content[language].family1.title}
+        subtitle={content[language].family1.subtitle}
+        qualityTitle={content[language].family1.quality}
+        description={content[language].family1.description}
+        image="https://samco.com.vn/vnt_upload/product/xe_khach_xe_bus/thumbs/(570x380)_crop_samco_wenda_ksd5.png"
+        features={content[language].family1.features}
+        contentPosition="left"
+        backgroundColor="bg-gray-50"
+        showFeatures={true}
+      />
+      <FamilySection
+        title={content[language].family2.title}
+        subtitle={content[language].family2.subtitle}
+        qualityTitle={content[language].family2.quality}
+        description={content[language].family2.description}
+        image="https://samco.com.vn/vnt_upload/product/xe_tai/isuzu/thumbs/(600x400)_crop_28137199168_6c9e65aa49_o.png"
+        features={content[language].family2.features}
+        contentPosition="right"
+        backgroundColor="bg-white"
+        showFeatures={true}
+      />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{content[language].experience.warranty}</h3>
-              <p className="text-gray-300">
-                {language === 'en' ? 'Industry-leading warranty coverage for peace of mind' : 'Bảo hành dẫn đầu ngành cho sự an tâm'}
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Zap className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{content[language].experience.charging}</h3>
-              <p className="text-gray-300">
-                {language === 'en' ? 'Extensive charging network coverage' : 'Mạng lưới trạm sạc bao phủ rộng khắp'}
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{content[language].experience.service}</h3>
-              <p className="text-gray-300">
-                {language === 'en' ? 'Premium customer service and support' : 'Dịch vụ khách hàng và hỗ trợ cao cấp'}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* News Articles Section */}
+      <NewsArticles
+        title={content[language].news.title}
+        subtitle={content[language].news.subtitle}
+        articles={newsArticles}
+        layout="2-2"
+        backgroundColor="bg-white"
+        showReadMore={true}
+        showAuthor={true}
+        showDate={true}
+        showReadTime={true}
+      />
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {content[language].newsletter.title}
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            {content[language].newsletter.description}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder={language === 'en' ? 'Enter your email' : 'Nhập email của bạn'}
-              className="form-input text-gray-900"
-            />
-            <button className="btn-secondary bg-white text-vinfast-blue-600 hover:bg-gray-100">
-              {language === 'en' ? 'Subscribe' : 'Đăng ký'}
-            </button>
-          </div>
-        </div>
-      </section>
+      <Newsletter
+        title={content[language].newsletter.title}
+        description={content[language].newsletter.description}
+        placeholderText={content[language].newsletter.placeholder}
+        buttonText={content[language].newsletter.button}
+        backgroundColor="bg-blue-600"
+        textColor="text-white"
+        onSubmit={handleNewsletterSubmit}
+        showIcon={true}
+        layout="center"
+      />
     </div>
   );
-};
+}
 
 export default HomePage;

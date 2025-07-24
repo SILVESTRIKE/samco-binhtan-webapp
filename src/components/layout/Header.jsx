@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X, Globe } from 'lucide-react';
 import CategoryMegaMenu from './CategoryMegaMenu';
+import { Link } from 'react-router-dom';
 
 function Header({ language, setLanguage, currentPage, setCurrentPage }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,13 +32,13 @@ function Header({ language, setLanguage, currentPage, setCurrentPage }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center cursor-pointer" onClick={() => setCurrentPage('home')}>
+            <Link to="/" className="flex items-center cursor-pointer">
               <img
                 src="https://samco.com.vn/vnt_upload/weblink/logo.png"
                 alt="Samco Logo"
                 className="w-20 h-auto object-contain"
               />
-            </div>
+            </Link>
 
             {/* Desktop menu */}
             <div className="hidden md:flex items-center space-x-8">
@@ -48,18 +49,10 @@ function Header({ language, setLanguage, currentPage, setCurrentPage }) {
                 {menuItems[language].vehicles}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-              <button onClick={() => setCurrentPage('charging')} className="nav-link">
-                {menuItems[language].charging}
-              </button>
-              <button onClick={() => setCurrentPage('service')} className="nav-link">
-                {menuItems[language].service}
-              </button>
-              <button onClick={() => setCurrentPage('about')} className="nav-link">
-                {menuItems[language].about}
-              </button>
-              <button onClick={() => setCurrentPage('contact')} className="nav-link">
-                {menuItems[language].contact}
-              </button>
+              <Link to="/charging" className="nav-link">{menuItems[language].charging}</Link>
+              <Link to="/service" className="nav-link">{menuItems[language].service}</Link>
+              <Link to="/about" className="nav-link">{menuItems[language].about}</Link>
+              <Link to="/contact" className="nav-link">{menuItems[language].contact}</Link>
             </div>
 
             {/* Language switch + Test drive */}
