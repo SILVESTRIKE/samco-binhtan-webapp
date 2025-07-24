@@ -1,0 +1,251 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Base Styles */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #1f2937;
+        background-color: #ffffff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+}
+
+/* Component Styles */
+@layer components {
+
+    /* Button Styles */
+    .btn-primary {
+        @apply bg-vinfast-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-vinfast-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-vinfast-blue-500 focus:ring-offset-2 active:transform active:scale-95;
+    }
+
+    .btn-secondary {
+        @apply border-2 border-vinfast-blue-600 text-vinfast-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-vinfast-blue-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-vinfast-blue-500 focus:ring-offset-2;
+    }
+
+    .btn-outline {
+        @apply border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+    }
+
+    /* Card Styles */
+    .card {
+        @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+    }
+
+    .card-dark {
+        @apply bg-vinfast-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+    }
+
+    /* Navigation Styles */
+    .nav-link {
+        @apply text-vinfast-gray-700 hover:text-vinfast-blue-600 transition-colors duration-200 font-medium relative;
+    }
+
+    .nav-link::after {
+        content: '';
+        @apply absolute bottom-0 left-0 w-0 h-0.5 bg-vinfast-blue-600 transition-all duration-300;
+    }
+
+    .nav-link:hover::after {
+        @apply w-full;
+    }
+
+    /* Form Styles */
+    .form-input {
+        @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vinfast-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400;
+    }
+
+    /* Hero Section Styles */
+    .hero-gradient {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    }
+
+    .hero-overlay {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    }
+
+    /* Animation Utilities */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .animate-fade-in-left {
+        animation: fadeInLeft 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    /* Staggered Animation Delays */
+    .animate-delay-100 {
+        animation-delay: 0.1s;
+    }
+
+    .animate-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animate-delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    .animate-delay-400 {
+        animation-delay: 0.4s;
+    }
+
+    .animate-delay-500 {
+        animation-delay: 0.5s;
+    }
+}
+
+/* Utility Styles */
+@layer utilities {
+
+    /* Backdrop Blur Utilities */
+    .backdrop-blur-xs {
+        backdrop-filter: blur(2px);
+    }
+
+    /* Gradient Text */
+    .text-gradient-blue {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Custom Shadows */
+    .shadow-glow-blue {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Responsive Text Sizes */
+    .text-responsive-xl {
+        @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    }
+
+    .text-responsive-lg {
+        @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Loading States */
+.loading-skeleton {
+    @apply animate-pulse bg-gray-300 rounded;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        color: black !important;
+        background: white !important;
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .mobile-padding {
+        @apply px-4;
+    }
+
+    .mobile-text-center {
+        @apply text-center;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        @apply border-2 border-current;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
