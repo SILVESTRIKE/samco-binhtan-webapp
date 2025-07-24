@@ -1,12 +1,12 @@
 import React from 'react';
 import { Shield, Battery, Zap, Users, Wrench, Car } from 'lucide-react';
-import HeroBanner from './HeroBanner';
-import HeroContent from './HeroContent'; 
-import FamilySection from './FamilySection';
-import NewsArticles from './NewsArticles';
-import Newsletter from './Newsletter';
+import HeroBanner from './components/HeroBanner';
+import HeroContent from './components/HeroContent';
+import FamilySection from './components/FamilySection';
+import NewsArticles from './components/NewsArticles';
+import Newsletter from './components/Newsletter';
 function HomePage({ language = 'vi' }) {
-  
+
   const content = {
     en: {
       hero: {
@@ -39,7 +39,7 @@ function HomePage({ language = 'vi' }) {
         title: "Latest Samco News",
         subtitle: "Stay updated with the latest developments and innovations from Samco"
       },
-       newsletter: {
+      newsletter: {
         title: "Join Our Community",
         description: "Sign up here to find out more about the exceptional features crafted into every Samco and our mission for a better future.",
         placeholder: "Enter your email",
@@ -95,7 +95,7 @@ function HomePage({ language = 'vi' }) {
     { title: "Ưu đãi dịch vụ Hè 2025", subtitle: "Bảo dưỡng toàn diện, sẵn sàng cho mọi chuyến đi.", image: "https://xekhach-bacviet.vn/wp-content/uploads/2024/11/hyundai-solti-dl-e5-mau-den-6.jpg", exploreText: "Xem chi tiết", testDriveText: "Đặt lịch" },
     { title: "Phụ tùng chính hãng", subtitle: "Đảm bảo hiệu suất và an toàn tối đa.", image: "https://samco.com.vn/vnt_upload/product/03_2017/thumbs/(600x400)_crop_prod6.jpg", exploreText: "Tìm hiểu", testDriveText: "Tư vấn" },
   ];
-  
+
   // DỮ LIỆU CHO SLIDER 3
   const slider3_Data = [
     { image: "https://xekhach-bacviet.vn/wp-content/uploads/2024/09/3-1.jpg", exploreText: "Các dòng xe tải", testDriveText: "Báo giá" },
@@ -187,9 +187,9 @@ function HomePage({ language = 'vi' }) {
         {(activeSlide) => (
           // SỬA ĐỔI CHÍNH Ở ĐÂY: Dùng 'mt-auto'
           <div className="w-full mt-auto pb-24 flex justify-center px-4">
-            <HeroContent 
+            <HeroContent
               slide={{ exploreText: activeSlide.exploreText, testDriveText: activeSlide.testDriveText }}
-              onExplore={handleExploreClick} 
+              onExplore={handleExploreClick}
               onTestDrive={handleTestDriveClick}
             />
           </div>
