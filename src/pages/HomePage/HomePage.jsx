@@ -80,14 +80,14 @@ function HomePage({ language }) {
       {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img 
+          <img
             src={heroSlides[currentSlide].image}
             alt={heroSlides[currentSlide].title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-overlay"></div>
         </div>
-        
+
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
@@ -127,7 +127,7 @@ function HomePage({ language }) {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=400&fit=crop"
                 alt="VinFast Interior"
                 className="rounded-2xl shadow-2xl"
@@ -181,7 +181,7 @@ function HomePage({ language }) {
                 {language === 'en' ? 'Industry-leading warranty coverage for peace of mind' : 'Bảo hành dẫn đầu ngành cho sự an tâm'}
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Zap className="h-10 w-10" />
@@ -191,7 +191,7 @@ function HomePage({ language }) {
                 {language === 'en' ? 'Extensive charging network coverage' : 'Mạng lưới trạm sạc bao phủ rộng khắp'}
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Users className="h-10 w-10" />
@@ -215,8 +215,8 @@ function HomePage({ language }) {
             {content[language].newsletter.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
+            <input
+              type="email"
               placeholder={language === 'en' ? 'Enter your email' : 'Nhập email của bạn'}
               className="form-input text-gray-900"
             />
