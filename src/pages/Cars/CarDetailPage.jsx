@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { getCarById } from '../../api/mockCarApi'; // Đường dẫn tới API giả
 
 // Import các component con
-import CarImageSlider from '../../components/carDetail/CarImageSlider';
-import QuickSpecs from '../../components/carDetail/QuickSpecs';
-import SpecificationTable from '../../components/carDetail/SpecificationTable';
-import ActionButtons from '../../components/carDetail/ActionButtons';
-import DisclaimerNotes from '../../components/carDetail/DisclaimerNotes';
+import CarImageSlider from './components/CarImageSlider';
+import QuickSpecs from './components/QuickSpecs';
+import SpecificationTable from './components/SpecificationTable';
+import ActionButtons from './components/ActionButtons';
+import DisclaimerNotes from './components/DisclaimerNotes';
 
 // Truyền carId vào đây. Trong một ứng dụng thực tế, bạn sẽ lấy nó từ URL (ví dụ: react-router-dom)
 const CarDetailPage = ({ carId = 'herio-green' }) => {
