@@ -1,12 +1,75 @@
-# React + Vite
+# SAMCO Binh Tan Dealership Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the client-side web application for the SAMCO dealership and VinFast portal. Built using React, Vite, and Tailwind CSS, this platform provides an interactive vehicle catalog, accessory store, and e-commerce functionalities designed to showcase and facilitate vehicle sales.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend Core**: React 18 (with functional components and hooks)
+- **Routing**: React Router DOM 6
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Styling**: Tailwind CSS (version 3) with custom theme setups
+- **Build Tool**: Vite (supporting Fast Refresh with SWC)
 
-## Expanding the ESLint configuration
+## Page Registry
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The application structure includes the following page views:
+- **Home**: Main portal landing page highlighting featured vehicles and announcements.
+- **Cars & Motorcycles**: Showroom and detailing pages for vehicles.
+- **Accessories**: E-commerce interface for ordering parts and vehicle upgrades.
+- **Charging Station Locator**: Portal utility to find vehicle charging locations.
+- **News**: Company announcements, automotive news, and press releases.
+- **Offers**: Active discount campaigns and dealership promotions.
+- **Careers**: Job listings and recruitment portal.
+- **Auth**: User login and registration pages.
+- **Cart**: Shopping cart review for checkout.
+- **Support & Utilities**: Help center, contact forms, and client tools.
+
+## Project Structure
+
+```
+src/
+├── api/          # API integration services
+├── components/   # Reusable UI components
+├── contexts/     # React Context providers for global state
+├── hooks/        # Custom React hooks
+├── pages/        # Main route views and page layouts
+├── routes/       # Route configuration mapping page paths
+└── utils/        # Helper functions and utilities
+```
+
+## Prerequisites
+
+- Node.js >= 16.x
+- npm or yarn
+
+## Installation and Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SILVESTRIKE/samco-binhtan-webapp.git
+   cd samco-binhtan-webapp
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build the application for production:
+   ```bash
+   npm run build
+   ```
+
+## Development Scripts
+
+- `npm run dev`: Starts the local development server with Vite.
+- `npm run build`: Bundles the application using Vite for production deployment.
+- `npm run lint`: Analyzes the codebase using ESLint to enforce styling rules.
+- `npm run preview`: Locally previews the production build.
+
