@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ | MEU CMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+    <%- include('./partials/navbar') %>
+
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-20">
+            <div class="text-center text-white">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    MEU CMS
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto">
+                    Hệ thống quản lý nội dung hiện đại, mạnh mẽ và dễ sử dụng cho mọi doanh nghiệp.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <% if (typeof user !=='undefined' && user) { %>
+                        <a href="/products"
+                            class="bg-white text-indigo-600 px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/90 transition transform hover:scale-105 shadow-lg">
+                            Quản lý sản phẩm
+                        </a>
+                        <a href="/profile"
+                            class="bg-white/20 text-white border-2 border-white/50 px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/30 transition">
+                            Hồ sơ của tôi
+                        </a>
+                        <% } else { %>
+                            <a href="/register"
+                                class="bg-white text-indigo-600 px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/90 transition transform hover:scale-105 shadow-lg">
+                                Bắt đầu miễn phí
+                            </a>
+                            <a href="/login"
+                                class="bg-white/20 text-white border-2 border-white/50 px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/30 transition">
+                                Đăng nhập
+                            </a>
+                            <% } %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20">
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bảo mật cao</h3>
+                    <p class="text-white/70">JWT Authentication với Silent Refresh và OTP verification.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20">
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Quản lý sản phẩm</h3>
+                    <p class="text-white/70">CRUD đầy đủ cho sản phẩm, danh mục, và media.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20">
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Phân quyền</h3>
+                    <p class="text-white/70">Role-based access control với Admin, Editor, Viewer.</p>
+                </div>
+            </div>
+        </section>
+
+        <%- include('./partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+  "type": "commonjs",
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/mongoose": "^5.11.96",
+    "axios": "^1.10.0",
+    "bcryptjs": "3.0.3",
+    "cookie-parser": "1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "ejs": "3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "2.5.1",
+    "jsonwebtoken": "9.0.3",
+    "mongoose": "^5.13.23",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "nodemailer": "7.0.11",
+    "ts-node-dev": "^2.0.0",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/cookie-parser": "1.4.10",
+    "@types/jsonwebtoken": "9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "7.0.4",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "db:seed": "ts-node src/scripts/seed.ts"
+  }
+}

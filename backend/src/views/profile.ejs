@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ của tôi | MEU CMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+    <%- include('./partials/navbar') %>
+
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-2xl mx-auto">
+                <!-- Profile Card -->
+                <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden">
+                    <!-- Header -->
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-10 text-center">
+                        <div
+                            class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <span class="text-4xl font-bold text-indigo-600">
+                                <%= user.username.charAt(0).toUpperCase() %>
+                            </span>
+                        </div>
+                        <h1 class="text-2xl font-bold text-white">
+                            <%= user.username %>
+                        </h1>
+                        <p class="text-white/80">
+                            <%= user.email %>
+                        </p>
+                        <% if (user.role==='admin' ) { %>
+                            <span class="inline-block mt-3 bg-yellow-500 text-white text-sm px-4 py-1 rounded-full">
+                                Admin
+                            </span>
+                            <% } else { %>
+                                <span
+                                    class="inline-block mt-3 bg-blue-500 text-white text-sm px-4 py-1 rounded-full capitalize">
+                                    <%= user.role %>
+                                </span>
+                                <% } %>
+                    </div>
+
+                    <!-- Alerts -->
+                    <div class="px-8 pt-6">
+                        <% if (typeof error !=='undefined' && error) { %>
+                            <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-r-lg">
+                                <p class="text-sm">
+                                    <%= error %>
+                                </p>
+                            </div>
+                            <% } %>
+
+                                <% if (typeof success !=='undefined' && success) { %>
+                                    <div
+                                        class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded-r-lg">
+                                        <p class="text-sm">
+                                            <%= success %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="p-8">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-6">Thông tin tài khoản</h2>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                                <span class="text-gray-600">ID</span>
+                                <span class="font-medium text-gray-800">#<%= user.id %></span>
+                            </div>
+                            <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                                <span class="text-gray-600">Tên người dùng</span>
+                                <span class="font-medium text-gray-800">
+                                    <%= user.username %>
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                                <span class="text-gray-600">Email</span>
+                                <span class="font-medium text-gray-800">
+                                    <%= user.email %>
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                                <span class="text-gray-600">Trạng thái</span>
+                                <% if (user.verify) { %>
+                                    <span class="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">Đã xác
+                                        thực</span>
+                                    <% } else { %>
+                                        <span class="bg-yellow-100 text-yellow-700 text-sm px-3 py-1 rounded-full">Chưa
+                                            xác thực</span>
+                                        <% } %>
+                            </div>
+                            <div class="flex items-center justify-between py-3">
+                                <span class="text-gray-600">Vai trò</span>
+                                <span class="font-medium text-gray-800 capitalize">
+                                    <%= user.role %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="bg-gray-50 px-8 py-6 flex flex-col sm:flex-row gap-3">
+                        <a href="/profile/edit"
+                            class="flex-1 text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-xl transition">
+                            Chỉnh sửa hồ sơ
+                        </a>
+                        <form action="/logout" method="POST" class="flex-1">
+                            <button type="submit"
+                                class="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-xl transition">
+                                Đăng xuất
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./partials/footer') %>
+</body>
+
+</html>
